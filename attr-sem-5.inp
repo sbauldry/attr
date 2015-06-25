@@ -1,0 +1,21 @@
+TITLE: status attainment model with parent income interaction;
+DATA: file = attr-data-3.txt;
+  TYPE = imputation;
+VARIABLE: NAMES = phyatt1-phyatt4 peratt1-peratt4 w4edu w1age female
+    r2-r4 rg2-rg4 f2-f5 paredu lninc pvt gpa w1bmi;
+  USEVARIABLES = phyatt1-phyatt3 peratt1-peratt3 w4edu w1age female
+    r2-r4 rg2-rg4 f2-f5 paredu lninc pvt gpa w1bmi;
+ANALYSIS: TYPE = RANDOM;
+MODEL: 
+  PerAtt BY peratt1-peratt3;
+  PhyAtt BY phyatt1-phyatt3;
+  peratt1 WITH phyatt1;
+  peratt2 WITH phyatt2;
+  peratt3 WITH phyatt3;
+
+  PerAtt_lninc | PerAtt XWITH lninc;
+
+  PerAtt PhyAtt ON paredu lninc w1age female r2-r4 f2-f5 rg2-rg4 pvt gpa w1bmi;
+  w4edu ON PerAtt PhyAtt paredu lninc PerAtt_lninc w1age female r2-r4 f2-f5 rg2-rg4 
+           pvt gpa w1bmi;
+  PerAtt WITH PhyAtt;

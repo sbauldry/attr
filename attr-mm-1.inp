@@ -1,0 +1,10 @@
+TITLE: personality and physical attractiveness measurement models;
+DATA: file = attr-data-3.txt;
+  type = imputation;
+VARIABLE: names = phyatt1-phyatt4 peratt1-peratt4 w4edu w1age female
+    r2-r4 rg2-rg4 f2-f5 paredu lninc pvt gpa w1bmi;
+  usevariables = phyatt1-phyatt3 peratt1-peratt3;
+MODEL: 
+  PerAtt BY peratt1-peratt3;
+  PhyAtt BY phyatt1-phyatt3;
+ OUTPUT: STDYX;
