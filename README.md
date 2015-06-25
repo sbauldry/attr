@@ -8,5 +8,6 @@ This repository contains replication code for analyses related to perceived attr
 4. attr-mm-1.inp: Mplus input file for measurement model 1.
 5. attr-mm-2.inp: Mplus input file for measurement model 2.
 6. attr-sem-x.inp: Mplus input files for models 1 through 5.
-7. attr-tables-10.xlsx: Excel file with additional tables of results for auxiliary analyses.
-8. attr-fig1.R: R code to prepare Figure 1.
+7. attr-sib-1.inp: Mplus input file for sibling fixed effects model.
+8. attr-tables-10.xlsx: Excel file with additional tables of results for auxiliary analyses.
+9. attr-fig1.R: R code to prepare Figure 1.

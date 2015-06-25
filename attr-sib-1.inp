@@ -1,0 +1,33 @@
+TITLE: personality and physical attractiveness sibling fixed effects;
+DATA: file = attr-sib-data-3.txt;
+      type = imputation;
+VARIABLE: names = famid w4edu1 w4edu2 phy11 phy21 phy31 phy12 phy22 phy32
+                  per11 per21 per31 per12 per22 per32 paredu1 paredu2
+                  lninc1 lninc2 bmi1 bmi2 gpa1 gpa2 pvt1 pvt2;
+   usevariables = w4edu1 w4edu2 phy11 phy21 phy31 phy12 phy22 phy32
+                  per11 per21 per31 per12 per22 per32 bmi1 bmi2 
+                  gpa1 gpa2 pvt1 pvt2;
+MODEL: 
+Per1 BY per11 per21 per31;
+Per2 BY per12 per22 per32;
+Phy1 BY phy11 phy21 phy31;
+Phy2 BY phy12 phy22 phy32;
+
+Eta BY w4edu1@1 w4edu2@1;
+
+w4edu1 ON pvt1 (1);
+w4edu2 ON pvt2 (1); 
+
+w4edu1 ON gpa1 (2);
+w4edu2 ON gpa2 (2);
+
+w4edu1 ON bmi1 (3);
+w4edu2 ON bmi2 (3);
+
+w4edu1 ON Per1 (4);
+w4edu2 ON Per2 (4);
+
+w4edu1 ON Phy1 (5);
+w4edu2 ON Phy2 (5);
+
+OUTPUT: STDYX;
